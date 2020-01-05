@@ -22,7 +22,7 @@ public class EmployeeResource {
     @GET
     @Path("/{passId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserByUsername(@PathParam("passId") int passId){
+    public Response getEmployeeByPassId(@PathParam("passId") int passId){
         Employee employee = employeeService.getEmployeeByPassId(passId);
 
         if(employee != null){
@@ -37,7 +37,7 @@ public class EmployeeResource {
     @POST
     @Path("")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addUser(Employee employee){
+    public Response addEmployee(Employee employee){
         if(employeeService.addEmployee(employee)){
             return Response.status(Response.Status.CREATED).entity(new ClientApproval("Account added successfully"))
                     .build();
@@ -50,7 +50,7 @@ public class EmployeeResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/{workerId}/addstatus")
-    public Response addReportToUser(@PathParam("workerId") int workerId, Status status){
+    public Response addStatusToEmployee(@PathParam("workerId") int workerId, Status status){
         if(employeeService.addStatusToEmployee(workerId,status)){
             return Response.status(Response.Status.OK).entity(new ClientApproval("Status successfully added to employee" +
                     "with workerId " + workerId)).build();
