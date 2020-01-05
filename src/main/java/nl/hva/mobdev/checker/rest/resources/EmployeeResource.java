@@ -7,7 +7,6 @@ import nl.hva.mobdev.checker.rest.model.ClientError;
 import nl.hva.mobdev.checker.rest.service.inter.IEmployeeService;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 

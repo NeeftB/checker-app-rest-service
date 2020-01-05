@@ -20,4 +20,18 @@ public class StatusResource {
         this.statusService = statusService;
     }
 
+    @GET
+    @Path("{workerId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCurrentStatusByWorkerId(@PathParam("workerId") int workerId){
+        Status status = statusService.getCurrentStatusByWorkerId(workerId);
+
+        if(status != null){
+            return Response.status(Response.Status.OK).entity(status).build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError(
+                    "This employee does not have a current status"
+            )).build();
+        }
+    }
 }

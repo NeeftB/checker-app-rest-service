@@ -15,14 +15,11 @@ import javax.transaction.Transactional;
 public class StatusService implements IStatusService {
 
     private IStatusDAO statusDAO;
-    private IEmployeeService employeeService;
 
     @Inject
     public StatusService(
-            @Named(ApplicationConfig.STATUS_DAO_NAME) IStatusDAO statusDAO,
-            @Named(ApplicationConfig.EMPLOYEE_SERVICE_NAME) IEmployeeService employeeService) {
+            @Named(ApplicationConfig.STATUS_DAO_NAME) IStatusDAO statusDAO) {
         this.statusDAO = statusDAO;
-        this.employeeService = employeeService;
     }
 
     @Override
@@ -30,4 +27,8 @@ public class StatusService implements IStatusService {
         return statusDAO.addStatus(status);
     }
 
+    @Override
+    public Status getCurrentStatusByWorkerId(int workerId) {
+        return statusDAO.getStatusByWorkerId(workerId);
+    }
 }

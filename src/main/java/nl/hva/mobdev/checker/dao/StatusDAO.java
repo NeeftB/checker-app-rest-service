@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 @Stateless
@@ -22,5 +23,14 @@ public class StatusDAO implements IStatusDAO {
     public boolean addStatus(Status status) {
         em.persist(status);
         return true;
+    }
+
+    @Override
+    public Status getStatusByWorkerId(int workerId) {
+        TypedQuery<Status> query = em.createQuery("SELECT s FROM Status s " +
+                "WHERE s.employee.workerId = :workerId ORDER BY s.id DESC", Status.class);
+        query.setMaxResults(1);
+        query.setParameter("workerId", workerId);
+        return query.getSingleResult();
     }
 }
