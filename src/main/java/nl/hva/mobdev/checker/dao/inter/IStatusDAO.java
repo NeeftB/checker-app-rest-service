@@ -6,4 +6,5 @@ public interface IStatusDAO {
 
     boolean addStatus(Status status);
     Status getStatusByWorkerId(int workerId);
+    boolean changeStatus(Status status);
 }

@@ -9,7 +9,6 @@ import nl.hva.mobdev.checker.rest.service.inter.IEmployeeService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 public class EmployeeResource {
 
     private IEmployeeService employeeService;

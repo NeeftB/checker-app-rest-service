@@ -33,4 +33,15 @@ public class StatusDAO implements IStatusDAO {
         query.setParameter("workerId", workerId);
         return query.getSingleResult();
     }
+
+    @Override
+    public boolean changeStatus(Status status) {
+        if(status.getStatus().equalsIgnoreCase("in")){
+            status.setStatus("out");
+        } else {
+            status.setStatus("in");
+        }
+        em.flush();
+        return true;
+    }
 }

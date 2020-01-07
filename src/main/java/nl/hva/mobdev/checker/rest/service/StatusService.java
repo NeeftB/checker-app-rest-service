@@ -31,4 +31,10 @@ public class StatusService implements IStatusService {
     public Status getCurrentStatusByWorkerId(int workerId) {
         return statusDAO.getStatusByWorkerId(workerId);
     }
+
+    @Override
+    public boolean changeStatus(int workerId) {
+        Status status = getCurrentStatusByWorkerId(workerId);
+        return statusDAO.changeStatus(status);
+    }
 }
