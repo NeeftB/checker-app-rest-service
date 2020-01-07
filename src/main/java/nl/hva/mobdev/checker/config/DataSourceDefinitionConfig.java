@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 /**
  * Configuration of the connection with mySQL.
  * Change the user and password so it can connect with your mySQL database.
+ *
+ * @author NeeftB
  */
 @DataSourceDefinition(
         name = "java:app/env/jdbc/CheckerDb",

@@ -4,7 +4,8 @@ import nl.hva.mobdev.checker.model.Status;
 
 public interface IStatusService {
     boolean addStatus(Status status);
-    Status getCurrentStatusByWorkerId(int workerId);
 
-    boolean changeStatus(int workerId);
+    Status getCurrentStatusByEmployeeId(int employeeId);
+
+    boolean changeStatus(int employeeId);
 }

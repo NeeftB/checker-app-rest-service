@@ -6,12 +6,19 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+/**
+ * CORS filter for web requests
+ * This allows users to send requests to the API.
+ * Otherwise Google (for example) may block your requests.
+ *
+ * @author NeeftB
+ */
 @Provider
 public class CorsFilter implements ContainerResponseFilter {
 
     @Override
     public void filter(ContainerRequestContext requestContext,
-                       ContainerResponseContext responseContext) throws IOException {
+                       ContainerResponseContext responseContext) {
         responseContext.getHeaders().add(
                 "Access-Control-Allow-Origin", "*");
         responseContext.getHeaders().add(

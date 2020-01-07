@@ -6,6 +6,8 @@ import javax.ws.rs.core.Application;
 /**
  * Configuration for Rest Endpoint using JAX-RS.
  * Here the application path (start url) is defined.
+ *
+ * @author NeeftB
  */
 @ApplicationPath("services")
 public class ApplicationConfig extends Application {

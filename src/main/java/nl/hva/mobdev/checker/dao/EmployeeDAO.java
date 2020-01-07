@@ -30,10 +30,10 @@ public class EmployeeDAO implements IEmployeeDAO {
     }
 
     @Override
-    public Employee getEmployeeByWorkerId(int workerId) {
+    public Employee getEmployeeByEmployeeId(int employeeId) {
         TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e " +
-                "WHERE e.workerId = :workerId", Employee.class);
-        query.setParameter("workerId", workerId);
+                "WHERE e.employeeId = :employeeId", Employee.class);
+        query.setParameter("employeeId", employeeId);
         return query.getSingleResult();
     }
 
@@ -44,9 +44,9 @@ public class EmployeeDAO implements IEmployeeDAO {
     }
 
     @Override
-    public boolean employeeExists(int workerId) {
-        Query query = em.createQuery("SELECT e FROM Employee e WHERE e.workerId = : workerId");
-        query.setParameter("workerId", workerId);
+    public boolean employeeExists(int employeeId) {
+        Query query = em.createQuery("SELECT e FROM Employee e WHERE e.employeeId = : employeeId");
+        query.setParameter("employeeId", employeeId);
 
         return query.getResultList().size() > 0;
     }

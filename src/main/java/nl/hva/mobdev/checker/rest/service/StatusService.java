@@ -28,13 +28,13 @@ public class StatusService implements IStatusService {
     }
 
     @Override
-    public Status getCurrentStatusByWorkerId(int workerId) {
-        return statusDAO.getStatusByWorkerId(workerId);
+    public Status getCurrentStatusByEmployeeId(int employeeId) {
+        return statusDAO.getStatusByEmployeeId(employeeId);
     }
 
     @Override
-    public boolean changeStatus(int workerId) {
-        Status status = getCurrentStatusByWorkerId(workerId);
+    public boolean changeStatus(int employeeId) {
+        Status status = getCurrentStatusByEmployeeId(employeeId);
         return statusDAO.changeStatus(status);
     }
 }

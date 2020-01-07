@@ -9,6 +9,7 @@ import nl.hva.mobdev.checker.rest.service.inter.IEmployeeService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 public class EmployeeResource {
 
     private IEmployeeService employeeService;
@@ -47,11 +48,11 @@ public class EmployeeResource {
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/{workerId}/addstatus")
-    public Response addStatusToEmployee(@PathParam("workerId") int workerId, Status status){
-        if(employeeService.addStatusToEmployee(workerId,status)){
+    @Path("/{employeeId}/addstatus")
+    public Response addStatusToEmployee(@PathParam("employeeId") int employeeId, Status status) {
+        if (employeeService.addStatusToEmployee(employeeId, status)) {
             return Response.status(Response.Status.OK).entity(new ClientApproval("Status successfully added to employee" +
-                    "with workerId " + workerId)).build();
+                    "with employeeId " + employeeId)).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError("Status isn't added due an error"))
                     .build();

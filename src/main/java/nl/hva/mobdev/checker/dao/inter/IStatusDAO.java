@@ -5,6 +5,7 @@ import nl.hva.mobdev.checker.model.Status;
 public interface IStatusDAO {
 
     boolean addStatus(Status status);
-    Status getStatusByWorkerId(int workerId);
+
+    Status getStatusByEmployeeId(int employeeId);
     boolean changeStatus(Status status);
 }

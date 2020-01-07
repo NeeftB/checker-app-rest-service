@@ -33,8 +33,8 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Employee getEmployeeByWorkerId(int workerId) {
-        return employeeDAO.getEmployeeByWorkerId(workerId);
+    public Employee getEmployeeByEmployeeId(int employeeId) {
+        return employeeDAO.getEmployeeByEmployeeId(employeeId);
     }
 
     @Override
@@ -44,20 +44,16 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public boolean checkPassword(int passId, String password) {
-        if(getEmployeeByPassId(passId).getPassword().equals(password))
-        {  return true;}
-        else {
-           return false;
-        }
+        return getEmployeeByPassId(passId).getPassword().equals(password);
     }
 
     @Override
-    public boolean addStatusToEmployee(int workerId, Status status) {
-        if(!employeeDAO.employeeExists(workerId)){
+    public boolean addStatusToEmployee(int employeeId, Status status) {
+        if (!employeeDAO.employeeExists(employeeId)) {
             return false;
         } else {
             statusService.addStatus(status);
-            return employeeDAO.addStatusToEmployee(getEmployeeByWorkerId(workerId), status);
+            return employeeDAO.addStatusToEmployee(getEmployeeByEmployeeId(employeeId), status);
         }
     }
 

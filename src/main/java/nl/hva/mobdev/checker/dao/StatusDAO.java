@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.Date;
 
 @Stateless
 @Transactional
@@ -26,22 +27,23 @@ public class StatusDAO implements IStatusDAO {
     }
 
     @Override
-    public Status getStatusByWorkerId(int workerId) {
+    public Status getStatusByEmployeeId(int employeeId) {
         TypedQuery<Status> query = em.createQuery("SELECT s FROM Status s " +
-                "WHERE s.employee.workerId = :workerId ORDER BY s.id DESC", Status.class);
+                "WHERE s.employee.employeeId = :employeeId ORDER BY s.id DESC", Status.class);
         query.setMaxResults(1);
-        query.setParameter("workerId", workerId);
+        query.setParameter("employeeId", employeeId);
         return query.getSingleResult();
     }
 
     @Override
     public boolean changeStatus(Status status) {
-        if(status.getStatus().equalsIgnoreCase("in")){
+        if (status.getStatus().equalsIgnoreCase("in")) {
             status.setStatus("out");
+            status.setLastCheckOutDate(new Date());
+            em.flush();
+            return true;
         } else {
-            status.setStatus("in");
+            return false;
         }
-        em.flush();
-        return true;
     }
 }

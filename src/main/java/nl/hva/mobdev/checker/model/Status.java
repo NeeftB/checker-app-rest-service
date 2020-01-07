@@ -6,9 +6,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Represents a parking status of an employee.
+ * When created a the status will always be in.
+ * Also a new check in date will be created.
+ *
+ * @author NeeftB
+ */
 @Entity
 @Table(name = "Status")
-public class Status {
+public class Status implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,23 +23,19 @@ public class Status {
     private int id;
 
     @Column(name = "status")
-    private String status;
+    private String status = "in";
 
     @Column(name = "last_check_in_date")
     private Date lastCheckInDate = new Date();
 
     @Column(name = "last_check_out_date")
-    private Date lastCheckOutDate = new Date();
+    private Date lastCheckOutDate;
 
     @JsonbTransient
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;
 
     public Status() {
-    }
-
-    public Status(String status) {
-        this.status = status;
     }
 
     public int getId() {

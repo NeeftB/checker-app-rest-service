@@ -20,10 +20,10 @@ public class StatusResource {
     }
 
     @GET
-    @Path("{workerId}")
+    @Path("{employeeId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCurrentStatusByWorkerId(@PathParam("workerId") int workerId){
-        Status status = statusService.getCurrentStatusByWorkerId(workerId);
+    public Response getCurrentStatusByWorkerId(@PathParam("employeeId") int employeeId) {
+        Status status = statusService.getCurrentStatusByEmployeeId(employeeId);
 
         if(status != null){
             return Response.status(Response.Status.OK).entity(status).build();
@@ -35,13 +35,14 @@ public class StatusResource {
     }
 
     @PUT
-    @Path("/{workerId}/change")
+    @Path("/{employeeId}/change")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response changeStatus(@PathParam("workerId") int workerId) {
-        if(statusService.changeStatus(workerId)) {
+    public Response changeStatus(@PathParam("employeeId") int employeeId) {
+        if (statusService.changeStatus(employeeId)) {
             return Response.status(Response.Status.OK).entity(new ClientApproval("Status changed")).build();
         } else {
-            return Response.status(Response.Status.CONFLICT).entity(new ClientError("There went something wrong")).build();
+            return Response.status(Response.Status.CONFLICT).entity(new ClientError("You are already checked out"))
+                    .build();
         }
     }
 }
