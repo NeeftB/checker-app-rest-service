@@ -63,11 +63,11 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public int getWorkerId() {
+    public int getEmployeeIdId() {
         return employeeId;
     }
 
-    public void setWorkerId(int employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 

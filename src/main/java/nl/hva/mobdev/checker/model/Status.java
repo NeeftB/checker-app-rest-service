@@ -23,10 +23,10 @@ public class Status implements Serializable {
     private int id;
 
     @Column(name = "status")
-    private String status = "in";
+    private String status;
 
     @Column(name = "last_check_in_date")
-    private Date lastCheckInDate = new Date();
+    private Date lastCheckInDate;
 
     @Column(name = "last_check_out_date")
     private Date lastCheckOutDate;
@@ -36,6 +36,8 @@ public class Status implements Serializable {
     private Employee employee;
 
     public Status() {
+        setStatus("in");
+        setLastCheckInDate(new Date());
     }
 
     public int getId() {
