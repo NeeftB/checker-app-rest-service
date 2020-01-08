@@ -6,6 +6,9 @@ import javax.ws.rs.core.Application;
 /**
  * Configuration for Rest Endpoint using JAX-RS.
  * Here the application path (start url) is defined.
+ * This class contains all the final names for the
+ * Persistence unit, services and dao classes.
+ * These final names are used by the injections.
  *
  * @author NeeftB
  */

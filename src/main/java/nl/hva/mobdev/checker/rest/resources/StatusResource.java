@@ -1,16 +1,20 @@
 package nl.hva.mobdev.checker.rest.resources;
 
-import nl.hva.mobdev.checker.model.Employee;
 import nl.hva.mobdev.checker.model.Status;
 import nl.hva.mobdev.checker.rest.model.ClientApproval;
 import nl.hva.mobdev.checker.rest.model.ClientError;
 import nl.hva.mobdev.checker.rest.service.inter.IStatusService;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * The REST resource with all the REST requests for the status
+ * of the employee.
+ *
+ * @author NeeftB
+ */
 public class StatusResource {
 
     private IStatusService statusService;
@@ -25,7 +29,7 @@ public class StatusResource {
     public Response getCurrentStatusByWorkerId(@PathParam("employeeId") int employeeId) {
         Status status = statusService.getCurrentStatusByEmployeeId(employeeId);
 
-        if(status != null){
+        if (status != null) {
             return Response.status(Response.Status.OK).entity(status).build();
         } else {
             return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError(

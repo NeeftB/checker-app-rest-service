@@ -13,11 +13,24 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+/**
+ * This is the data access object for the employee.
+ * Here are all queries defined to access the Employee table
+ * in the database.
+ *
+ * @author NeeftB
+ */
 @Stateless
 @Transactional
 @Named(ApplicationConfig.EMPLOYEE_DAO_NAME)
 public class EmployeeDAO implements IEmployeeDAO {
 
+    /**
+     * This entity manager is doing all the work between the API and the
+     * database. The PersistenceContext ensures that each new object will
+     * look to the correct persistence unit. This prevents multiple
+     * entity managers from working side by side
+     */
     @PersistenceContext(unitName = ApplicationConfig.PERSISTENCE_UNIT_NAME)
     private EntityManager em;
 

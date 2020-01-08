@@ -12,11 +12,24 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.Date;
 
+/**
+ * This is the data access object for the status of the employee.
+ * Here are all queries defined to access the Status table
+ * in the database.
+ *
+ * @author NeeftB
+ */
 @Stateless
 @Transactional
 @Named(ApplicationConfig.STATUS_DAO_NAME)
 public class StatusDAO implements IStatusDAO {
 
+    /**
+     * This entity manager is doing all the work between the API and the
+     * database. The PersistenceContext ensures that each new object will
+     * look to the correct persistence unit. This prevents multiple
+     * entity managers from working side by side
+     */
     @PersistenceContext(unitName = ApplicationConfig.PERSISTENCE_UNIT_NAME)
     private EntityManager em;
 

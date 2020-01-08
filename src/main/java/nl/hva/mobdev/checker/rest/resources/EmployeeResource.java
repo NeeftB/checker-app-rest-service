@@ -10,6 +10,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * The REST resource with all the REST requests for the employee.
+ *
+ * @author NeeftB
+ */
 public class EmployeeResource {
 
     private IEmployeeService employeeService;

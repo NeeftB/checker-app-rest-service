@@ -11,7 +11,14 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-
+/**
+ * This is a service class which is the bridge between
+ * the Rest Controller and the DAO of the employee.
+ * Here, for example, calculation can take place
+ * before it enters the database or vice versa
+ *
+ * @author NeeftB
+ */
 @Transactional
 @Named(ApplicationConfig.EMPLOYEE_SERVICE_NAME)
 public class EmployeeService implements IEmployeeService {
@@ -19,10 +26,20 @@ public class EmployeeService implements IEmployeeService {
     private IEmployeeDAO employeeDAO;
     private IStatusService statusService;
 
+    /**
+     * Constructor for the EmployeeService.
+     * If a new EmployeeService object is created the code will look if
+     * there are already an employeeDAO object or a statusService object.
+     * If so, the new created object will be injected in the already existing one.
+     * This ensures that duplicate objects cannot work side by side, which can cause problems.
+     *
+     * @param employeeDAO
+     * @param statusService
+     */
     @Inject
     public EmployeeService(
-            @Named(ApplicationConfig.EMPLOYEE_DAO_NAME)IEmployeeDAO employeeDAO,
-            @Named(ApplicationConfig.STATUS_SERVICE_NAME) IStatusService statusService){
+            @Named(ApplicationConfig.EMPLOYEE_DAO_NAME) IEmployeeDAO employeeDAO,
+            @Named(ApplicationConfig.STATUS_SERVICE_NAME) IStatusService statusService) {
         this.employeeDAO = employeeDAO;
         this.statusService = statusService;
     }
