@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "024fd81a-a196-4f91-b7bd-58ab8656d8df",
+		"name": "CheckerApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"workerId\":\"66366\", \"firstName\":\"Test\", \"lastName\":\"van der tester\", \"passId\":\"5012\", \"password\":\"tester\" }\n\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"passId\":\"5012\", \"password\":\"tester\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/authentication",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEmployeeByPassId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/employee/5012",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"employee",
+						"5012"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddStatusToEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"status\": \"out\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/employee/66366/addstatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"employee",
+						"66366",
+						"addstatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCurrentStatusByWorkerId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/status/66366",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"status",
+						"66366"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeStatus",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/status/636366/change",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"status",
+						"636366",
+						"change"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
