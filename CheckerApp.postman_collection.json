@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"workerId\":\"66366\", \"firstName\":\"Test\", \"lastName\":\"van der tester\", \"passId\":\"5012\", \"password\":\"tester\" }\n\n"
+					"raw": "{\"employeeId\":\"66366\", \"firstName\":\"Test\", \"lastName\":\"van der tester\", \"passId\":\"5012\", \"password\":\"tester\" }\n\n"
 				},
 				"url": {
 					"raw": "http://localhost:8080/checker/services/rest/employee",
@@ -108,7 +108,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"status\": \"out\"}",
+					"raw": "{}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -163,7 +163,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/checker/services/rest/status/636366/change",
+					"raw": "http://localhost:8080/checker/services/rest/status/66366/change",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -174,7 +174,7 @@
 						"services",
 						"rest",
 						"status",
-						"636366",
+						"66366",
 						"change"
 					]
 				}

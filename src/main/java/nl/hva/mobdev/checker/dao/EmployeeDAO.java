@@ -37,7 +37,7 @@ public class EmployeeDAO implements IEmployeeDAO {
     @Override
     public Employee getEmployeeByPassId(int passId) {
         TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e " +
-                "WHERE e.passId = :passId", Employee.class);
+                "LEFT JOIN FETCH e.statuses s WHERE e.passId = :passId", Employee.class);
         query.setParameter("passId", passId);
         return query.getSingleResult();
     }
