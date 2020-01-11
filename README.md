@@ -21,7 +21,7 @@ You can test the requests by using the tool Postman (https://www.getpostman.com/
 You can import the CheckerApp.postman_collection.json file in Postman and all the available requests will show up.
 
 To Start
-- change the credentials to your credentials in the DataSourceDefinitionConfig.java file. This file can be found in:
+- Change the credentials to your MySQL credentials in the DataSourceDefinitionConfig.java file. This file can be found in:
   src/main/java/nl/hva/mobdev/checker/config/
 - Do a maven clean and install
 - Add the backend server to your IDE and start this. If everything works correct a browser screen will pop up with the text Hello World!
