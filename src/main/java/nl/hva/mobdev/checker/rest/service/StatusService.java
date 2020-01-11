@@ -45,9 +45,15 @@ public class StatusService implements IStatusService {
         return statusDAO.addStatus(status);
     }
 
+
+
     @Override
     public Status getCurrentStatusByEmployeeId(int employeeId) {
-        return statusDAO.getStatusByEmployeeId(employeeId);
+        if(statusDAO.checkEmployeeHasStatus(employeeId)){
+            return statusDAO.getStatusByEmployeeId(employeeId);
+        } else {
+            return null;
+        }
     }
 
     @Override

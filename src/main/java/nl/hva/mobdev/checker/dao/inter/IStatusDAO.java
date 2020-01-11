@@ -14,5 +14,7 @@ public interface IStatusDAO {
 
     Status getStatusByEmployeeId(int employeeId);
 
+    boolean checkEmployeeHasStatus(int employeeId);
+
     boolean changeStatus(Status status);
 }

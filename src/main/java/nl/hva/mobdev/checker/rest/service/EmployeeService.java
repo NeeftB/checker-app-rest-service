@@ -56,7 +56,11 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public boolean addEmployee(Employee employee) {
-        return employeeDAO.addEmployee(employee);
+        if(employeeDAO.employeeExists(employee.getEmployeeId())){
+            return false;
+        } else {
+            return employeeDAO.addEmployee(employee);
+        }
     }
 
     @Override
@@ -64,9 +68,23 @@ public class EmployeeService implements IEmployeeService {
         return getEmployeeByPassId(passId).getPassword().equals(password);
     }
 
+    /**
+     * This function will add a status to an employee.
+     * First it will check if the employee exists. The second check
+     * is to see if the employee already has a status. If so, and there is no
+     * checkout time the user is still checked in. The employee must then first change
+     * his status before he can check in again.
+     * @param employeeId is the ID of the current employee.
+     * @param status is the new status of the employee.
+     * @return true if the employee exists and if he has no status yet or if his current status
+     * is checked out.
+     */
     @Override
     public boolean addStatusToEmployee(int employeeId, Status status) {
-        if (!employeeDAO.employeeExists(employeeId)) {
+        Status currentStatus = statusService.getCurrentStatusByEmployeeId(employeeId);
+        if (!employeeDAO.employeeExists(employeeId)
+                || (currentStatus != null && currentStatus.getLastCheckOutDate() == null)
+        ) {
             return false;
         } else {
             statusService.addStatus(status);

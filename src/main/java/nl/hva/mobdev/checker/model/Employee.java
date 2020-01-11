@@ -35,7 +35,6 @@ public class Employee implements Serializable {
     private String password;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonbTransient
     private Set<Status> statuses = new HashSet<>();
 
     /**
@@ -63,7 +62,7 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public int getEmployeeIdId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 

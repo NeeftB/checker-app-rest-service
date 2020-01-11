@@ -57,9 +57,9 @@ public class EmployeeResource {
     public Response addStatusToEmployee(@PathParam("employeeId") int employeeId, Status status) {
         if (employeeService.addStatusToEmployee(employeeId, status)) {
             return Response.status(Response.Status.OK).entity(new ClientApproval("Status successfully added to employee" +
-                    "with employeeId " + employeeId)).build();
+                    " with employeeId " + employeeId)).build();
         } else {
-            return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError("Status isn't added due an error"))
+            return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError("You are already checked in"))
                     .build();
         }
     }

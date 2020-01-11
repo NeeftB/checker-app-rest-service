@@ -49,6 +49,16 @@ public class StatusDAO implements IStatusDAO {
     }
 
     @Override
+    public boolean checkEmployeeHasStatus(int employeeId) {
+        TypedQuery<Status> query = em.createQuery("SELECT s FROM Status s " +
+                "WHERE s.employee.employeeId = :employeeId ORDER BY s.id DESC", Status.class);
+        query.setMaxResults(1);
+        query.setParameter("employeeId", employeeId);
+
+        return query.getResultList().size() > 0;
+    }
+
+    @Override
     public boolean changeStatus(Status status) {
         if (status.getStatus().equalsIgnoreCase("in")) {
             status.setStatus("out");
