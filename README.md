@@ -8,7 +8,7 @@ Requirements
 - IDE
   * e.g. IntelliJ IDEA
   
-Maven Dependecies (see pom.xml file)
+Maven Dependecies (see pom.xml file for versions)
 - Java EE 8 for JAX-RS
 - Hibernate
 - JPA 2.1
