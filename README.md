@@ -4,9 +4,9 @@ A self made REST API for a school project. This will function as the backend for
 Requirements
 - MySQL 8.0
 - Backend server
-  * I used Payara Server https://www.payara.fish/software/downloads/all-downloads/
+  * e.g. Payara Server (https://www.payara.fish)
 - IDE
-  * I used IntelliJ
+  * e.g. IntelliJ IDEA
   
 Maven Dependecies (see pom.xml file)
 - Java EE 8 for JAX-RS
@@ -14,7 +14,11 @@ Maven Dependecies (see pom.xml file)
 - JPA 2.1
 - MySQL Java Database Connector
 - JSON-B
-- J-UNIT
+
+Test requests
+
+You can test the requests by using the tool Postman (https://www.getpostman.com/).
+You can import the CheckerApp.postman_collection.json file in Postman and all the available requests will show up.
 
 
 
