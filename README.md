@@ -5,7 +5,7 @@ Requirements
 - MySQL 8.0
 - Backend server
   * e.g. Payara Server (https://www.payara.fish)
-- IDE
+- IDE with JDK 8
   * e.g. IntelliJ IDEA
   
 Maven Dependecies (see pom.xml file for versions)
