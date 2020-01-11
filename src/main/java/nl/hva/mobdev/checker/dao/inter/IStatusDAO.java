@@ -2,6 +2,8 @@ package nl.hva.mobdev.checker.dao.inter;
 
 import nl.hva.mobdev.checker.model.Status;
 
+import java.util.Set;
+
 /**
  * Interface for the StatusDao.
  * This interface contains all functions the status dao must implement.
@@ -17,4 +19,6 @@ public interface IStatusDAO {
     boolean checkEmployeeHasStatus(int employeeId);
 
     boolean changeStatus(Status status);
+
+    Set<Status> getStatusHistoryOfEmployee(int employeeId, int limit);
 }

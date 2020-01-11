@@ -20,6 +20,7 @@ public class Status implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "status_id")
+    @JsonbTransient
     private int id;
 
     @Column(name = "status")

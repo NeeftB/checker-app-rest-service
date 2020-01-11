@@ -3,12 +3,12 @@ package nl.hva.mobdev.checker.rest.service;
 import nl.hva.mobdev.checker.dao.inter.IStatusDAO;
 import nl.hva.mobdev.checker.model.Status;
 import nl.hva.mobdev.checker.rest.config.ApplicationConfig;
-import nl.hva.mobdev.checker.rest.service.inter.IEmployeeService;
 import nl.hva.mobdev.checker.rest.service.inter.IStatusService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
+import java.util.Set;
 
 /**
  * This is a service class which is the bridge between
@@ -60,5 +60,10 @@ public class StatusService implements IStatusService {
     public boolean changeStatus(int employeeId) {
         Status status = getCurrentStatusByEmployeeId(employeeId);
         return statusDAO.changeStatus(status);
+    }
+
+    @Override
+    public Set<Status> getStatusHistoryOfEmployee(int employeeId, int limit) {
+        return statusDAO.getStatusHistoryOfEmployee(employeeId, limit);
     }
 }

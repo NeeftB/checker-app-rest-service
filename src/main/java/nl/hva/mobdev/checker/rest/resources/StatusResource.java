@@ -8,6 +8,7 @@ import nl.hva.mobdev.checker.rest.service.inter.IStatusService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Set;
 
 /**
  * The REST resource with all the REST requests for the status
@@ -26,7 +27,7 @@ public class StatusResource {
     @GET
     @Path("{employeeId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCurrentStatusByWorkerId(@PathParam("employeeId") int employeeId) {
+    public Response getCurrentStatusByEmployeeId(@PathParam("employeeId") int employeeId) {
         Status status = statusService.getCurrentStatusByEmployeeId(employeeId);
 
         if (status != null) {
@@ -35,6 +36,26 @@ public class StatusResource {
             return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError(
                     "This employee does not have a current status"
             )).build();
+        }
+    }
+
+    /**
+     * Function to get the history of the parking statuses of an employee.
+     * @param employeeId is the Id of the employee. It is used to find all statuses that
+     *                   belongs to the employee with this Id.
+     * @param limit is the max number of results that you get back in your request.
+     * @return a response with the history of the statuses. Otherwise an error message.
+     */
+    @GET
+    @Path("{employeeId}/history/{limit}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getStatusHistoryOfEmployee(@PathParam("employeeId") int employeeId,
+                                         @PathParam("limit") int limit) {
+        Set<Status> statuses = statusService.getStatusHistoryOfEmployee(employeeId, limit);
+        if(statuses.size() > 0){
+            return Response.status(Response.Status.OK).entity(statuses).build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError("History not available")).build();
         }
     }
 

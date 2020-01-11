@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * This is the data access object for the status of the employee.
@@ -68,5 +70,16 @@ public class StatusDAO implements IStatusDAO {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public Set<Status> getStatusHistoryOfEmployee(int employeeId, int limit) {
+        TypedQuery<Status> query = em.createQuery("SELECT s FROM Status s " +
+                "WHERE s.employee.employeeId = :employeeId ORDER BY s.id DESC", Status.class);
+        query.setMaxResults(limit);
+        query.setParameter("employeeId", employeeId);
+
+        Set<Status> statuses = new HashSet<>(query.getResultList());
+        return statuses;
     }
 }
