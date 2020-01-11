@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Add Employee",
+			"name": "AddEmployee",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -176,6 +176,31 @@
 						"status",
 						"66366",
 						"change"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStatusHistoryOfEmployee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/checker/services/rest/status/66366/history/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checker",
+						"services",
+						"rest",
+						"status",
+						"66366",
+						"history",
+						"10"
 					]
 				}
 			},
