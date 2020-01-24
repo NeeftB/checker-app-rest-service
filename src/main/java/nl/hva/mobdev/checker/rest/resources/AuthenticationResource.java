@@ -1,6 +1,7 @@
 package nl.hva.mobdev.checker.rest.resources;
 
 import nl.hva.mobdev.checker.model.Employee;
+import nl.hva.mobdev.checker.rest.model.ClientError;
 import nl.hva.mobdev.checker.rest.service.EmployeeService;
 import nl.hva.mobdev.checker.rest.service.inter.IEmployeeService;
 
@@ -54,7 +55,8 @@ public class AuthenticationResource {
         } catch (IllegalAccessException e) {
             // Return FORBIDDEN response if an error occurred during the
             // login process.
-            return Response.status(Response.Status.FORBIDDEN).build();
+            return Response.status(Response.Status.FORBIDDEN).entity(new ClientError("PassId and password combination " +
+                    "is not correct")).build();
         }
     }
 

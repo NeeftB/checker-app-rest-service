@@ -46,7 +46,11 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public Employee getEmployeeByPassId(int passId) {
+    try {
         return employeeDAO.getEmployeeByPassId(passId);
+    } catch (Exception e) {
+        return null;
+    }
     }
 
     @Override
@@ -65,7 +69,12 @@ public class EmployeeService implements IEmployeeService {
 
     @Override
     public boolean checkPassword(int passId, String password) {
-        return getEmployeeByPassId(passId).getPassword().equals(password);
+        try {
+            return getEmployeeByPassId(passId).getPassword().equals(password);
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
     /**

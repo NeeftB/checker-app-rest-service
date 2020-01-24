@@ -33,7 +33,8 @@ public class EmployeeResource {
             return Response.status(Response.Status.OK).entity(employee)
                     .build();
         } else {
-            return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError("Username doesn't exist"))
+            return Response.status(Response.Status.BAD_REQUEST).entity(new ClientError("Employee with passId: " +
+                    passId + " doesn't exist"))
                     .build();
         }
     }
