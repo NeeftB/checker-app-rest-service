@@ -32,6 +32,9 @@ public class Status implements Serializable {
     @Column(name = "last_check_out_date")
     private Date lastCheckOutDate;
 
+    @Column(name = "reason")
+    private String reason;
+
     @JsonbTransient
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;
@@ -75,6 +78,14 @@ public class Status implements Serializable {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
     @Override

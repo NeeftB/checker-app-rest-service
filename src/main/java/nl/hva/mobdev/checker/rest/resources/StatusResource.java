@@ -62,8 +62,8 @@ public class StatusResource {
     @PUT
     @Path("/{employeeId}/change")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response changeStatus(@PathParam("employeeId") int employeeId) {
-        if (statusService.changeStatus(employeeId)) {
+    public Response changeStatus(@PathParam("employeeId") int employeeId, Status status) {
+        if (statusService.changeStatus(employeeId, status)) {
             return Response.status(Response.Status.OK).entity(new ClientApproval("Status changed")).build();
         } else {
             return Response.status(Response.Status.CONFLICT).entity(new ClientError("You are already checked out"))

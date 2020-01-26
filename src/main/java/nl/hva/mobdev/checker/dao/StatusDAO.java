@@ -61,10 +61,11 @@ public class StatusDAO implements IStatusDAO {
     }
 
     @Override
-    public boolean changeStatus(Status status) {
+    public boolean changeStatus(Status status, Status newStatus) {
         if (status.getStatus().equalsIgnoreCase("in")) {
             status.setStatus("out");
             status.setLastCheckOutDate(new Date());
+            status.setReason(newStatus.getReason());
             em.flush();
             return true;
         } else {

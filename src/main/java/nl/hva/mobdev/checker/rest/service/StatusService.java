@@ -57,9 +57,9 @@ public class StatusService implements IStatusService {
     }
 
     @Override
-    public boolean changeStatus(int employeeId) {
+    public boolean changeStatus(int employeeId, Status newStatus) {
         Status status = getCurrentStatusByEmployeeId(employeeId);
-        return statusDAO.changeStatus(status);
+        return statusDAO.changeStatus(status, newStatus);
     }
 
     @Override

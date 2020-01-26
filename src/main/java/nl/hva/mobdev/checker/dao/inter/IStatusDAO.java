@@ -18,7 +18,7 @@ public interface IStatusDAO {
 
     boolean checkEmployeeHasStatus(int employeeId);
 
-    boolean changeStatus(Status status);
+    boolean changeStatus(Status status, Status newStatus);
 
     Set<Status> getStatusHistoryOfEmployee(int employeeId, int limit);
 }

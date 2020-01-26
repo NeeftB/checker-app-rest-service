@@ -16,7 +16,7 @@ public interface IStatusService {
 
     Status getCurrentStatusByEmployeeId(int employeeId);
 
-    boolean changeStatus(int employeeId);
+    boolean changeStatus(int employeeId, Status status);
 
     Set<Status> getStatusHistoryOfEmployee(int employeeId, int limit);
 }
